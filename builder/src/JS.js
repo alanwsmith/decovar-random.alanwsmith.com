@@ -52,6 +52,10 @@ const getString = () => {
         axesValues[axis] = 0
     }
 
+    const randomAxis = axes[Math.floor(Math.random() * axes.length)]
+
+    axesValues[randomAxis] = 800
+
     for (const axis in axesValues) {
         assembler.push(`"${axis}" ${axesValues[axis]}`)
     }
