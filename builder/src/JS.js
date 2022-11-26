@@ -42,7 +42,8 @@ const getRandomObjectKey = (inputObj) => {
     return randomKey
 }
 
-let adjustments = []
+let adjustments = new Map()
+let direction = 'up'
 
 const getString = () => {
     const assembler = []
@@ -53,8 +54,20 @@ const getString = () => {
     }
 
     const randomAxis = axes[Math.floor(Math.random() * axes.length)]
+    const randomValue = Math.floor(Math.random() * (1000 - 300 + 1) + 300)
 
-    axesValues[randomAxis] = 800
+    if (direction === 'up') {
+        if (adjustments.size <= 4) {
+            adjustments.set(randomAxis, randomValue)
+        } else {
+            adjustments.set(randomAxis, randomValue)
+            direction = 'down'
+        }
+    }
+
+    adjustments.forEach((value, key) => {
+        axesValues[key] = value
+    })
 
     for (const axis in axesValues) {
         assembler.push(`"${axis}" ${axesValues[axis]}`)
