@@ -193,15 +193,34 @@ const getString = () => {
         axesValues[axis] = 0
     }
 
-    const randomAxis = axes[Math.floor(Math.random() * axes.length)]
-    const randomValue = Math.floor(Math.random() * (1000 - 300 + 1) + 300)
+    let randomAxis = null
+
+    // try not to use the same axis twice, but
+    // back off after 20 runs since that should
+    // hit most stuff
+    for (let i = 1; i < 20; i++) {
+        randomAxis = axes[Math.floor(Math.random() * axes.length)]
+        console.log(randomAxis)
+        if (!adjustments.has(randomAxis)) {
+            break
+        }
+    }
+
+    const randomValue = Math.floor(Math.random() * (1000 - 350 + 1) + 300)
 
     if (direction === 'up') {
-        if (adjustments.size <= 4) {
+        if (adjustments.size <= 5) {
             adjustments.set(randomAxis, randomValue)
         } else {
+            console.log(Array.from(adjustments.keys())[0])
             adjustments.set(randomAxis, randomValue)
             direction = 'down'
+        }
+    } else {
+        const axisToRemove = Array.from(adjustments.keys())[0]
+        adjustments.delete(axisToRemove)
+        if (adjustments.size === 0) {
+            direction = 'up'
         }
     }
 
