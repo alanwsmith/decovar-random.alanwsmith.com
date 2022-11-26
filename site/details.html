@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Hi there - welcome to the code. it's pretty hacky
+      since I didn't use a framework. Don't be surprised if
+      you end up scratching your head about something -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roboto Random Details</title>
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Roboto Random Details" />
+    <meta property="og:description" content="Details on Roboto Random" />
+    <meta
+      property="og:image"
+      content="https://res.cloudinary.com/awsimages/image/upload/w_1200,h_630,o_0,b_rgb:211717/c_fit,w_1020,h_430,co_rgb:dfddc7,l_text:Roboto_148_bold:Roboto%20Random/fl_layer_apply,g_north_west,x_65,y_65/co_rgb:666666,l_text:Inconsolata_42_bold:from%20alan%20w.%20smith/fl_layer_apply,g_south_east,x_65,y_45/1x1.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site:id" content="@TheIdOfAlan" />
+    <meta name="twitter:creator" content="@TheIdOfAlan" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="228x228"
+      href="/favicons/228x228.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="180x180"
+      href="/favicons/180x180.png"
+    />
+
+    <style>
+      @font-face {
+        font-family: 'RobotoFlex';
+        src: url('/fonts/RobotoFlex.ttf') format('opentype');
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      * {
+        margin: 0;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        line-height: 1.3;
+        -webkit-font-smoothing: antialiased;
+      }
+      img,
+      picture,
+      video,
+      canvas,
+      svg {
+        display: block;
+        max-width: 100%;
+      }
+      input,
+      button,
+      textarea,
+      select {
+        font: inherit;
+      }
+      p,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        overflow-wrap: break-word;
+      }
+      #root,
+      #__next {
+        isolation: isolate;
+      }
+
+      html {
+        height: 100%;
+      }
+
+      body {
+        background-color: #211717;
+        color: #dfddc7;
+        font-family: 'RobotoFlex';
+        height: 100%;
+      }
+
+      #wrapper {
+        min-height: 100%;
+        margin: auto;
+        max-width: 580px;
+        display: grid;
+        grid-template-rows: 1fr auto;
+        grid-template-columns: 100%;
+      }
+
+      #alfa {
+        font-size: 4.6rem;
+        font-variation-settings: 'wght' 400, 'wdth' 110, 'opsz' 20, 'GRAD' 20,
+          'slnt' 0, 'XTRA' 480, 'XOPQ' 100, 'YOPQ' 80, 'YTLC' 490, 'YTAS' 700,
+          'YTDE' -140;
+      }
+
+      #alfa {
+        text-align: center;
+        transition: font-variation-settings 1.4s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+
+      a {
+        color: #a34a28;
+        text-decoration: none;
+      }
+
+      footer {
+        text-align: center;
+        padding-bottom: 10px;
+      }
+      #subwrapper {
+        font-size: 1.3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <main>
+        <div id="subwrapper">
+          <p>
+            This is an experiment using the
+            <a href="https://github.com/googlefonts/roboto-flex">Roboto Flex</a>
+            variable font. It&apos;s a single font that provides thirteen
+            adjustable variables. One variable is chosen and modified at random
+            every second and a half. Every twelve iterations the varaibles are
+            returned to their baseline and the process starts again
+            <br /><br /><a href="/">Return To The Home Page</a>
+          </p>
+        </div>
+      </main>
+      <footer>
+        from <a href="https://hachyderm.io/@TheIdOfAlan">alan w. smith</a>
+        <br />
+        <a href="/">home page</a>
+        ~ <a href="https://www.alanwsmith.com">main site</a> ~
+        <a href="https://links.alanwsmith.com">links</a> ~
+        <a href="https://podcast.alanwsmith.com">podcast</a>
+      </footer>
+    </div>
+  </body>
+</html>

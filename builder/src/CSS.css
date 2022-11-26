@@ -1,0 +1,99 @@
+@font-face {
+  font-family: 'Decovar';
+  src: url('/fonts/DecovarAlpha-VF.ttf') format('opentype');
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+#root,
+#__next {
+  isolation: isolate;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #211717;
+  color: #dfddc7;
+  font-family: 'Decovar';
+  height: 100%;
+}
+
+#wrapper {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+}
+
+a {
+  color: #a34a28;
+  text-decoration: none;
+}
+
+footer {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+#alfa {
+  font-size: 4.6rem;
+  font-variation-settings: 'BLDA' 0, 'BLDB' 0, 'WMX2' 0, 'SKLA' 0, 'SKLB' 0,
+    'SKLD' 0, 'TRMA' 0, 'TRMB' 0, 'TRMC' 0, 'TRMD' 0, 'TRME' 0, 'TRMF' 0,
+    'TRMG' 0, 'TRMK' 0, 'TRML' 0;
+}
+
+#alfa {
+  text-align: center;
+  transition: font-variation-settings 1.4s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.details {
+  padding-top: 30px;
+  text-align: left;
+  max-width: 550px;
+  margin: auto;
+}

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Hi there - welcome to the code. it's pretty hacky
+      since I didn't use a framework. Don't be surprised if
+      you end up scratching your head about something -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roboto Random</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Roboto Random" />
+    <meta
+      property="og:description"
+      content="Playing around with Roboto Flex randomly"
+    />
+    <meta
+      property="og:image"
+      content="https://res.cloudinary.com/awsimages/image/upload/w_1200,h_630,o_0,b_rgb:211717/c_fit,w_1020,h_430,co_rgb:dfddc7,l_text:Roboto_148_bold:Roboto%20Random/fl_layer_apply,g_north_west,x_65,y_65/co_rgb:666666,l_text:Inconsolata_42_bold:from%20alan%20w.%20smith/fl_layer_apply,g_south_east,x_65,y_45/1x1.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site:id" content="@TheIdOfAlan" />
+    <meta name="twitter:creator" content="@TheIdOfAlan" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="228x228"
+      href="/favicons/228x228.png"
+    />
+    <link
+      rel="apple-touch-icon-precomposed"
+      sizes="180x180"
+      href="/favicons/180x180.png"
+    />
+
+    
+
+
+    <style>
+      @font-face {
+  font-family: 'Decovar';
+  src: url('/fonts/DecovarAlpha-VF.ttf') format('opentype');
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+#root,
+#__next {
+  isolation: isolate;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #211717;
+  color: #dfddc7;
+  font-family: 'Decovar';
+  height: 100%;
+}
+
+#wrapper {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+}
+
+a {
+  color: #a34a28;
+  text-decoration: none;
+}
+
+footer {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+#alfa {
+  font-size: 4.6rem;
+  font-variation-settings: 'BLDA' 0, 'BLDB' 0, 'WMX2' 0, 'SKLA' 0, 'SKLB' 0,
+    'SKLD' 0, 'TRMA' 0, 'TRMB' 0, 'TRMC' 0, 'TRMD' 0, 'TRME' 0, 'TRMF' 0,
+    'TRMG' 0, 'TRMK' 0, 'TRML' 0;
+}
+
+#alfa {
+  text-align: center;
+  transition: font-variation-settings 1.4s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.details {
+  padding-top: 30px;
+  text-align: left;
+  max-width: 550px;
+  margin: auto;
+}
+
+    </style>
+    <script>
+      const els = {}
+
+// const base = {
+//     BLDA: 0,
+//     BLDB: 0,
+//     WMX2: 0,
+//     SKLA: 0,
+//     SKLB: 0,
+//     SKLD: 0,
+//     TRMA: 0,
+//     TRMB: 0,
+//     TRMC: 0,
+//     TRMD: 0,
+//     TRME: 0,
+//     TRMF: 0,
+//     TRMG: 0,
+//     TRMK: 0,
+//     TRML: 0,
+// }
+
+const axes = [
+    'BLDA',
+    'BLDB',
+    'WMX2',
+    'SKLA',
+    'SKLB',
+    'SKLD',
+    'TRMA',
+    'TRMB',
+    'TRMC',
+    'TRMD',
+    'TRME',
+    'TRMF',
+    'TRMG',
+    'TRMK',
+    'TRML',
+]
+
+const getRandomObjectKey = (inputObj) => {
+    const keys = Object.keys(inputObj)
+    const randomKey = keys[Math.floor(Math.random() * keys.length)]
+    return randomKey
+}
+
+let adjustments = []
+
+const getString = () => {
+    const assembler = []
+    const axesValues = {}
+
+    for (const axis of axes) {
+        axesValues[axis] = 0
+    }
+
+    for (const axis in axesValues) {
+        assembler.push(`"${axis}" ${axesValues[axis]}`)
+    }
+
+    // const alterKey = getRandomObjectKey(current)
+
+    // for (const k in current) {
+    //     // reset to the home settings every now and then
+    //     if (variations === 0) {
+    //         current[k] = home[k]
+    //     }
+    //     if (Math.floor(Math.random() * 16) === 1) {
+    //         current['slnt'] = 0
+    //     }
+    //     if (k === alterKey) {
+    //         const min = limits[k][0]
+    //         const max = limits[k][1]
+    //         const newValue = Math.floor(Math.random() * (max - min + 1) + min)
+    //         current[k] = newValue
+    //     }
+    //     assembler.push(`"${k}" ${current[k]}`)
+    // }
+
+    return assembler.join(',')
+}
+
+let theTimeout = null
+
+const update = () => {
+    if (theTimeout) {
+        clearTimeout(theTimeout)
+    }
+    theTimeout = setTimeout(() => {
+        const updateValues = getString()
+        console.log(updateValues)
+        els.btn.style.fontVariationSettings = updateValues
+        update()
+    }, 1500)
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('dom loaded')
+    els.btn = document.getElementById('alfa')
+    update()
+})
+
+    </script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header></header>
+      <main><div id="alfa">the quick brown fox</div>
+</main>
+      <footer>
+        from <a href="https://hachyderm.io/@TheIdOfAlan">alan w. smith</a>
+        <br />
+        <a href="/details.html">details</a> ~
+        <a href="https://www.alanwsmith.com">main site</a> ~
+        <a href="https://links.alanwsmith.com">other sites</a> ~
+        <a href="https://podcast.alanwsmith.com">podcast</a>
+      </footer>
+    </div>
+  </body>
+</html>
