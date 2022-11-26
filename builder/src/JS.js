@@ -21,7 +21,7 @@ const els = {}
 const axes = [
     'BLDA',
     'BLDB',
-    'WMX2',
+    // 'WMX2',
     'SKLA',
     'SKLB',
     'SKLD',
@@ -60,7 +60,6 @@ const getString = () => {
     // hit most stuff
     for (let i = 1; i < 20; i++) {
         randomAxis = axes[Math.floor(Math.random() * axes.length)]
-        console.log(randomAxis)
         if (!adjustments.has(randomAxis)) {
             break
         }
@@ -72,7 +71,6 @@ const getString = () => {
         if (adjustments.size <= 5) {
             adjustments.set(randomAxis, randomValue)
         } else {
-            console.log(Array.from(adjustments.keys())[0])
             adjustments.set(randomAxis, randomValue)
             direction = 'down'
         }
@@ -80,6 +78,7 @@ const getString = () => {
         const axisToRemove = Array.from(adjustments.keys())[0]
         adjustments.delete(axisToRemove)
         if (adjustments.size === 0) {
+            adjustments.set(randomAxis, randomValue)
             direction = 'up'
         }
     }
@@ -92,25 +91,6 @@ const getString = () => {
         assembler.push(`"${axis}" ${axesValues[axis]}`)
     }
 
-    // const alterKey = getRandomObjectKey(current)
-
-    // for (const k in current) {
-    //     // reset to the home settings every now and then
-    //     if (variations === 0) {
-    //         current[k] = home[k]
-    //     }
-    //     if (Math.floor(Math.random() * 16) === 1) {
-    //         current['slnt'] = 0
-    //     }
-    //     if (k === alterKey) {
-    //         const min = limits[k][0]
-    //         const max = limits[k][1]
-    //         const newValue = Math.floor(Math.random() * (max - min + 1) + min)
-    //         current[k] = newValue
-    //     }
-    //     assembler.push(`"${k}" ${current[k]}`)
-    // }
-
     return assembler.join(',')
 }
 
@@ -122,14 +102,12 @@ const update = () => {
     }
     theTimeout = setTimeout(() => {
         const updateValues = getString()
-        console.log(updateValues)
         els.btn.style.fontVariationSettings = updateValues
         update()
-    }, 1500)
+    }, 1400)
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('dom loaded')
     els.btn = document.getElementById('alfa')
     update()
 })
