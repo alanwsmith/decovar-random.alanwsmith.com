@@ -21,7 +21,7 @@ const els = {}
 const axes = [
     'BLDA',
     'BLDB',
-    'WMX2',
+    // 'WMX2',
     'SKLA',
     'SKLB',
     'SKLD',
@@ -42,7 +42,8 @@ const getRandomObjectKey = (inputObj) => {
     return randomKey
 }
 
-let adjustments = []
+let adjustments = new Map()
+let direction = 'up'
 
 const getString = () => {
     const assembler = []
@@ -52,28 +53,43 @@ const getString = () => {
         axesValues[axis] = 0
     }
 
+    let randomAxis = null
+
+    // try not to use the same axis twice, but
+    // back off after 20 runs since that should
+    // hit most stuff
+    for (let i = 1; i < 20; i++) {
+        randomAxis = axes[Math.floor(Math.random() * axes.length)]
+        if (!adjustments.has(randomAxis)) {
+            break
+        }
+    }
+
+    const randomValue = Math.floor(Math.random() * (1000 - 350 + 1) + 300)
+
+    if (direction === 'up') {
+        if (adjustments.size <= 5) {
+            adjustments.set(randomAxis, randomValue)
+        } else {
+            adjustments.set(randomAxis, randomValue)
+            direction = 'down'
+        }
+    } else {
+        const axisToRemove = Array.from(adjustments.keys())[0]
+        adjustments.delete(axisToRemove)
+        if (adjustments.size === 0) {
+            adjustments.set(randomAxis, randomValue)
+            direction = 'up'
+        }
+    }
+
+    adjustments.forEach((value, key) => {
+        axesValues[key] = value
+    })
+
     for (const axis in axesValues) {
         assembler.push(`"${axis}" ${axesValues[axis]}`)
     }
-
-    // const alterKey = getRandomObjectKey(current)
-
-    // for (const k in current) {
-    //     // reset to the home settings every now and then
-    //     if (variations === 0) {
-    //         current[k] = home[k]
-    //     }
-    //     if (Math.floor(Math.random() * 16) === 1) {
-    //         current['slnt'] = 0
-    //     }
-    //     if (k === alterKey) {
-    //         const min = limits[k][0]
-    //         const max = limits[k][1]
-    //         const newValue = Math.floor(Math.random() * (max - min + 1) + min)
-    //         current[k] = newValue
-    //     }
-    //     assembler.push(`"${k}" ${current[k]}`)
-    // }
 
     return assembler.join(',')
 }
@@ -86,14 +102,12 @@ const update = () => {
     }
     theTimeout = setTimeout(() => {
         const updateValues = getString()
-        console.log(updateValues)
         els.btn.style.fontVariationSettings = updateValues
         update()
-    }, 1500)
+    }, 1400)
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('dom loaded')
     els.btn = document.getElementById('alfa')
     update()
 })

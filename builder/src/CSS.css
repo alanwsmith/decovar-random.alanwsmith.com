@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Decovar';
-  src: url('/fonts/DecovarAlpha-VF.ttf') format('opentype');
+  src: url('/fonts/Decovar.ttf') format('opentype');
 }
 
 *,
@@ -73,13 +73,14 @@ a {
 footer {
   text-align: center;
   padding-bottom: 10px;
+  font-size: 0.75rem;
 }
 
 #alfa {
   font-size: 4.6rem;
-  font-variation-settings: 'BLDA' 0, 'BLDB' 0, 'WMX2' 0, 'SKLA' 0, 'SKLB' 0,
-    'SKLD' 0, 'TRMA' 0, 'TRMB' 0, 'TRMC' 0, 'TRMD' 0, 'TRME' 0, 'TRMF' 0,
-    'TRMG' 0, 'TRMK' 0, 'TRML' 0;
+  font-variation-settings: 'BLDA' 0, 'BLDB' 0, 'SKLA' 0, 'SKLB' 0, 'SKLD' 0,
+    'TRMA' 0, 'TRMB' 0, 'TRMC' 0, 'TRMD' 0, 'TRME' 0, 'TRMF' 0, 'TRMG' 0,
+    'TRMK' 0, 'TRML' 0;
 }
 
 #alfa {
