@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Decovar';
-  src: url('/fonts/DecovarAlpha-VF.ttf') format('opentype');
+  src: url('/fonts/Decovar.ttf') format('opentype');
 }
 
 *,
@@ -73,6 +73,7 @@ a {
 footer {
   text-align: center;
   padding-bottom: 10px;
+  font-size: 0.75rem;
 }
 
 #alfa {
